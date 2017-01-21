@@ -247,5 +247,5 @@ function get_all_data(chat_room, callback, p_sort = {}, p_limit = 0) {
 }
 
 http.listen(5000, function(){
-  console.log('listening on *:3000');
+  console.log('listening on *:5000');
 });
