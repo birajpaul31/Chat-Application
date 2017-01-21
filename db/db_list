@@ -1,0 +1,6 @@
+{"k":"0000000078","o":"0000000097","v":"001"}
+{"_id":2,"_uid":2,"_dt":1485023704759,"_s":"9743bbd8f7625a9f6979c9755b61478f"}
+{"name":"default","db_user":"default_user","db_chat":"default_chat","_id":{"$wrap":"$oid","v":2}}
+{"k":"0000000078","o":"0000000096","v":"001"}
+{"_id":3,"_uid":3,"_dt":1485023704767,"_s":"f7c54d6afa20532c792914639d58f33c"}
+{"name":"room01","db_user":"room_01_user","db_chat":"room_01_chat","_id":{"$wrap":"$oid","v":3}}
