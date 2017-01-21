@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- For mobile display -->
+    <title>Chat</title>
+    <link href="/css/chat-room.css" rel="stylesheet" />
+	<link href="/bootstrap/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body, html {
+			height: 100%;
+		}
+		#main_window {
+			margin-top: 10px;
+		}
+		#main_window .panel {
+			height: 85vh;
+		}
+		#online_users {
+			max-height: 70vh;
+			overflow-y: auto;
+		}
+		#messages {
+			height: 75vh;
+			list-style-position: inside;
+			overflow-y: auto;
+		}
+		#chat_rooms {
+			max-height: 70vh;
+			overflow-y: auto;
+		}
+		
+		.chat_rooms_mob {
+			max-height: 70vh;
+			overflow-y: auto;
+			position: fixed;
+			display: block !important;
+			top: 50px;
+			right: 10px;
+			box-shadow: 10px 10px 5px #888888;
+		}
+		
+		.online_mob {
+			max-height: 70vh;
+			overflow-y: auto;
+			position: fixed;
+			display: block !important;
+			top: 50px;
+			right: 70px;
+			z-index: 999;
+			box-shadow: 10px 10px 5px #888888;
+		}
+		
+		@media only screen and (max-width: 400px) {
+			/* For mobile phones: */
+			#main_window .panel {
+				height: 80vh;
+			}
+			#messages {
+				height: 65vh;
+			}
+		}
+		
+	</style>
+	
+	<script>
+		var db_list = <%- db_list %>;
+	</script>
+	
+	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="/bootstrap/bootstrap.min.js"></script>
+	<script src="/js/chat-room.js"></script>
+  </head>
+  <body>
+	<div class="container-fluid">
+		<div id="username">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-default">
+					  <div class="panel-heading">Choose a username</div>
+					  <div class="panel-body">
+						<form action="" id="u_name_form">
+							<div class="form-group">
+								<input id="u_name" type="text" class="form-control" autocomplete="off" />
+							</div>
+							<button class="btn btn-default">Choose</button>
+						</form>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div id="main_window" class="hidden">
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+				<span class="panel-title pull-left">
+					
+				</span>
+				<button id="show_chat_mob" class="btn btn-default btn-xs pull-right visible-xs">Chats</button>
+				<button id="show_online_mob" class="btn btn-default btn-xs pull-right visible-xs">Online</button>
+				
+				<a href="#" id="new_chat_room_pop" class="btn btn-default btn-xs pull-right" data-toggle="popover" title="Room name" data-placement="auto left" data-html="true" data-content="<form id='new_chat_room' action=''><input type='text'/>&nbsp<input type='submit' value='Create' class='btn btn-default btn-xs' /></form>" rel="popover">
+					New Room
+				</a>
+					
+				<div class="clearfix"></div>
+			  </div>
+			  <div class="panel-body">
+					<div class="row">
+						<div class="col-md-2">
+							<h3 style="margin-top: 0; margin-bottom: 2px;"><span class="label label-info hidden-xs" style="display: inline-block; width: 100%;">Online Users</span></h3>
+							<ul id="online_users" class="list-group text-center hidden-xs"></ul>
+						</div>
+						
+						<div class="col-md-8" style="overflow-y: auto;">
+							<ul id="messages" class="list-group"></ul>
+						</div>
+						
+						<div class="col-md-2">
+							<h3 style="margin-top: 0; margin-bottom: 2px;"><span class="label label-info hidden-xs" style="display: inline-block; width: 100%;">Chat Rooms</span></h3>
+							<ul id="chat_rooms" class="list-group text-center hidden-xs"></ul>
+						</div>
+						
+					</div>
+			  </div>
+			</div>
+			
+			
+				<div class="row">
+					<div class="col-md-12">
+						<form action="" id="message_form" class="">
+							
+									<div class="form-group">
+										<input id="m" type="text" autocomplete="off" class="form-control pull-left" style="width: 94%; margin-right: 1.5%;" placeholder="Type your message ..." />
+										<button class="btn btn-default">Send</button>
+									</div>
+								
+									
+								
+						</form>
+					</div>
+				</div>
+	
+		</div>
+	</div>
+  </body>
+</html>
