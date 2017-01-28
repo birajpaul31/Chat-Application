@@ -106,7 +106,7 @@ app.get('/erasedb', function(req, res){
 db_list.find().toArray(function(err, list){
 	if(err)
 		console.log(err);
-	console.log("db_list "+list);
+	// console.log("db_list "+list);
 	list.map(function(item, idx){
 		console.log(item.name);
 		var db_user = database.collection(item.db_user);
@@ -127,18 +127,18 @@ function start_io_servers(name, db_user, db_chat) {
 	  });
 	  
 	  socket.on('new user', function(msg){
-		console.log(msg);
+		// console.log(msg);
 		user = msg;
 		user_sock_list[socket.id] = msg;
 		
 		var users_in_room = [];
 		get_all_data(db_user, function(list){
-			console.log(list);
+			// console.log(list);
 			list.map(function(item, idx){
 				users_in_room.push(item.user);
 			});
 			socket.broadcast.emit('new user joined', msg);
-			console.log(users_in_room);
+			// console.log(users_in_room);
 			get_all_data(db_chat, function(list){
 				socket.emit('online users', users_in_room);
 				socket.emit('chat data', list);
@@ -223,7 +223,7 @@ function change_rooms(u_name, user_db, chat_db, socket){
 			users_in_room.push(item.user);
 		});
 		socket.broadcast.emit('new user joined', u_name);
-		console.log(users_in_room);
+		// console.log(users_in_room);
 		get_all_data(new_chat, function(list){
 			socket.emit('online users', users_in_room);
 			socket.emit('chat data', list);
