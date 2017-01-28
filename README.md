@@ -12,4 +12,5 @@ Usage:
 Run the following commands:
 
 > npm install
+
 > node index.js
